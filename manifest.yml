@@ -1,0 +1,37 @@
+name: Cocookies
+package: community.lazycat.app.cocookies
+version: 0.1.3
+min_os_version: 1.3.8
+description: 一款自托管的菜谱软件
+homepage: https://github.com/mariinkys/cocookies/
+author: mariinkys
+application:
+  subdomain: cocookies
+  background_task: true
+
+  upstreams:
+    - location: /
+      backend: http://cocookies:8080/
+
+services:
+  cocookies:
+    container_name: cocookies
+    # mariinkys/cocookies:0.1.3
+    image: registry.lazycat.cloud/czyt/mariinkys/cocookies:ad3f66e33d8ea83b
+    environment:
+      - UPLOAD_DIR=/app/uploads
+      - DATABASE_URL=sqlite:/app/db/cocookies.db
+    binds:
+      - /lzcapp/var/db:/app/db
+      - /lzcapp/var/uploads:/app/uploads
+
+locales:
+  zh:
+    name: "Cocookies"
+    description: "一款自托管的食谱软件"
+  zh_CN:
+    name: "Cocookies"
+    description: "一款自托管的食谱软件"
+  en:
+    name: "Cocookies"
+    description: "A self-hostable recipe manager made with Leptos"
