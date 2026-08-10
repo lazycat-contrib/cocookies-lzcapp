@@ -12,16 +12,26 @@ update:
   allow_downgrade: false
   version_source:
     type: image
-    image: cocookies
+    image: frontend
 
 build:
   run_buildscript: false
 
 images:
-  - id: cocookies
+  - id: backend
     target: service
-    service: cocookies
-    source: docker.io/mariinkys/cocookies
+    service: backend
+    source: ghcr.io/mariinkys/cocookies-backend
+    channel: stable
+    sort: semver
+    tag_regex: '^\d+\.\d+\.\d+$'
+    delivery:
+      mode: lazycat
+
+  - id: frontend
+    target: service
+    service: frontend
+    source: ghcr.io/mariinkys/cocookies-frontend
     channel: stable
     sort: semver
     tag_regex: '^\d+\.\d+\.\d+$'
