@@ -1,15 +1,14 @@
 application:
   subdomain: cocookies
   background_task: true
-
   upstreams:
     - location: /
       backend: http://frontend:80/
-
 services:
   backend:
     # ghcr.io/mariinkys/cocookies-backend:0.2.0
-    image: ghcr.io/mariinkys/cocookies-backend:0.2.0
+    # upstream: ghcr.io/mariinkys/cocookies-backend:0.2.0
+    image: registry.lazycat.cloud/czyt/mariinkys/cocookies-backend:714fd2fdc061fe98
     environment:
       - SPRING_PROFILES_ACTIVE=prod
       - DB_URL=jdbc:sqlite:/app/data/cocookies.db
@@ -19,9 +18,9 @@ services:
       - TRUST_PROXY=true
     binds:
       - /lzcapp/var/data:/app/data
-
   frontend:
     # ghcr.io/mariinkys/cocookies-frontend:0.2.1
-    image: ghcr.io/mariinkys/cocookies-frontend:0.2.1
+    # upstream: ghcr.io/mariinkys/cocookies-frontend:0.2.1
+    image: registry.lazycat.cloud/czyt/mariinkys/cocookies-frontend:06cfd4a91ab74035
     depends_on:
       - backend
