@@ -9,6 +9,7 @@ services:
     # ghcr.io/mariinkys/cocookies-backend:0.2.0
     # upstream: ghcr.io/mariinkys/cocookies-backend:0.2.0
     image: registry.lazycat.cloud/czyt/mariinkys/cocookies-backend:714fd2fdc061fe98
+    user: root
     environment:
       - SPRING_PROFILES_ACTIVE=prod
       - DB_URL=jdbc:sqlite:/app/data/cocookies.db
