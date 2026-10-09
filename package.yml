@@ -1,11 +1,11 @@
 package: community.lazycat.app.cocookies
+license: GPL-3.0
 version: 0.2.1
 name: Cocookies
 description: 一款自托管的菜谱软件
 min_os_version: 1.5.0
 homepage: https://github.com/mariinkys/cocookies
 author: mariinkys
-
 locales:
   zh:
     name: "Cocookies"
